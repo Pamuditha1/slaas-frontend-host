@@ -1,0 +1,11 @@
+    GET http://localhost:3000/slaas/api/
+
+
+#    POST http://localhost:3000/slaas/api/users
+#    Content-Content-Type: application/json
+
+# {
+#     "name" : "Hawaqq",
+#     "email" : "daraja@gmail.com",
+#     "password" : "124556"
+# }
