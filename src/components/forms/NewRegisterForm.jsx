@@ -1022,19 +1022,6 @@ function NewRegisterForm() {
                           component={ValidationError}
                         />
                       </div>
-                      <div className="form-group col-5">
-                        <label htmlFor="council">Council Position</label>
-                        <Field
-                          className={`${handleStyle("council")}`}
-                          type="text"
-                          id="council"
-                          name="council"
-                        />
-                        <ErrorMessage
-                          name="council"
-                          component={ValidationError}
-                        />
-                      </div>
                     </div>
                     <div className="form-group row">
                       <div className="form-check-inline">
