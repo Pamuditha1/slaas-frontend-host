@@ -2,14 +2,14 @@ import http from "./httpService"
 import { toast } from "react-toastify";
 import {api} from './api'
 
-const apiEndPoint = `${api}/user/add-profilepic`;
+const apiEndPoint = `${api}/user/member/profile/`;
 
-export function addProfilePic(url, nic) {
+export function getMemberProfile(memID) {
 
-    return http.post(apiEndPoint, {url, nic})
+    return http.get(`${apiEndPoint}${memID}`)
     .then(function (response) {
-        console.log(response);
-        toast.success(`${response.data}`);
+        console.log(response.data);
+        return response.data
     })
     .catch(function (error) {
         if(error.response.data) {

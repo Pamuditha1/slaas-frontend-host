@@ -13,6 +13,7 @@ import { registerMember } from "../../services/registerMemberService";
 import { addProfilePic } from "../../services/addMemberProfilePic";
 import { getGrades } from "../../services/getGrades";
 import { getSections } from "../../services/getSections";
+import NewProfilePicUpload from "../NewProfilePicUpload";
 
 function NewRegisterForm() {
   useEffect(() => {
@@ -140,13 +141,13 @@ function NewRegisterForm() {
   const [filename, setFilename] = useState("Choose File");
   const [nameOfImage, setNameOfImage] = useState("");
 
-  const onImageSubmit = async () => {
-    // e.preventDefault()
-    const formData = new FormData();
-    formData.append("file", file);
-    console.log(file);
-    await addProfilePic(formData, nameOfImage);
-  };
+  // const onImageSubmit = async () => {
+  //   // e.preventDefault()
+  //   const formData = new FormData();
+  //   formData.append("file", file);
+  //   console.log(file);
+  //   await addProfilePic(formData, nameOfImage);
+  // };
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
@@ -161,13 +162,15 @@ function NewRegisterForm() {
       membershipNo: membershipNo.split("/")[0],
     };
     console.log("Member before save", member);
-    let result = await registerMember(member);
-    onImageSubmit();
+    registerMember(member).then(() => {
+      uploadImage();
+    });
+    // onImageSubmit();
     setLoading(false);
-    if (result)
-      setTimeout(function () {
-        reload();
-      }, 3000);
+    // if (result)
+    //   setTimeout(function () {
+    //     reload();
+    //   }, 3000);
   };
   const reload = () => {
     window.location.reload(false);
@@ -193,6 +196,28 @@ function NewRegisterForm() {
     backgroundColor: "#005336",
     borderRadius: "40px",
   };
+
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
+
+  const uploadImage = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "SLAAS Profile Pics");
+    data.append("cloud_name", "dl2axglxd");
+    fetch("  https://api.cloudinary.com/v1_1/dl2axglxd/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setUrl(data.url);
+        addProfilePic(data.url, nameOfImage);
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   switch (step) {
     case 1:
       return (
@@ -206,7 +231,7 @@ function NewRegisterForm() {
           <Formik
             className="container mt-5 mb-5"
             initialValues={memberData}
-            validationSchema={validationSchema}
+            // validationSchema={validationSchema}
             onSubmit={(values) => {
               setNameOfImage(`${values.nic}`);
               setMemberData(values);
@@ -226,8 +251,8 @@ function NewRegisterForm() {
               };
               return (
                 <>
-                  <ProfilePicUpload
-                    onImageSubmit={onImageSubmit}
+                  <NewProfilePicUpload
+                    // onImageSubmit={onImageSubmit}
                     file={file}
                     setFile={setFile}
                     filePreview={filePreview}
@@ -235,6 +260,10 @@ function NewRegisterForm() {
                     filename={filename}
                     setFilename={setFilename}
                     nameOfImage={nameOfImage}
+                    image={image}
+                    setImage={setImage}
+                    url={url}
+                    setUrl={setUrl}
                   />
                   <Form style={{ marginBottom: 50 }} autoComplete="off">
                     <div className="row">

@@ -65,6 +65,7 @@ export const MemberProfileWUpdate = (props) => {
 
   const {
     memberID,
+    image,
     membershipNo,
     gradeOfMembership,
     section,
@@ -202,7 +203,7 @@ export const MemberProfileWUpdate = (props) => {
           </div>
         </div>
         <div className="col-2 mr-5">
-          <ViewImage nic={nic} />
+          <ViewImage nic={nic} image={image} />
         </div>
         <div className="col-5" id="personalData">
           <p className="row">
@@ -705,7 +706,7 @@ export const MemberProfileWUpdate = (props) => {
               <div className="col-12" key={field.year}>
                 <strong>
                   {field.year} - {field.degree} - {field.disciplines} -{" "}
-                  {field.uni}
+                  {field.university}
                 </strong>
               </div>
             );
@@ -747,7 +748,7 @@ export const MemberProfileWUpdate = (props) => {
           </div>
           <div className="row col-12">
             <p className="col-3">Membership No : </p>
-            <strong className="col-9">{proposer.memNo}</strong>
+            <strong className="col-9">{proposer.membershipNo}</strong>
           </div>
           <div className="row col-12">
             <p className="col-3">Address : </p>
@@ -766,7 +767,7 @@ export const MemberProfileWUpdate = (props) => {
           </div>
           <div className="row col-12">
             <p className="col-3">Membership No : </p>
-            <strong className="col-9">{seconder.memNo}</strong>
+            <strong className="col-9">{seconder.membershipNo}</strong>
           </div>
           <div className="row col-12">
             <p className="col-3">Address : </p>
