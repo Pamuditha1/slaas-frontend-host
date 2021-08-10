@@ -1,3 +1,3 @@
 const port = 3002;
 
-export const api = `http://localhost:${port}/slaas/api`;
+export const api = `https://slaas-back.herokuapp.com/slaas/api`;
