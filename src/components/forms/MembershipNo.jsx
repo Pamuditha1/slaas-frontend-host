@@ -14,7 +14,7 @@ function MembershipNo(props) {
       });
     };
     fetchData();
-  }, [props]);
+  }, []);
 
   const onChangeMemNo = (e) => {
     setMembershipNo(e.target.value);

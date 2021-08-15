@@ -30,17 +30,25 @@ function PaymentRecordsForReceipt({ paymentRecords, membershipNo }) {
     await oneCalculateArrears(id);
   };
 
+  const gradeStyle = {
+    backgroundColor: "black",
+    color: "white",
+    borderRadius: "30px",
+  };
+
   return (
     <div style={backgroundStyle} className="col-12">
-      {paymentRecords.arrearsConti ? (
-        <p className="col-12" style={{ color: "red" }}>
-          Arrears to pay - <strong>Rs. {paymentRecords.arrearsConti}</strong>
-        </p>
-      ) : (
-        <p className="col-12">
-          Arrears to pay - <strong>No Record</strong>
+      {/* {paymentRecords.arrearsConti ? ( */}
+      {paymentRecords.gradeOfMembership && (
+        <p className="col-12 text-center pt-2 pb-2" style={gradeStyle}>
+          <strong>
+            {paymentRecords.gradeOfMembership} - Rs. {paymentRecords.gradeFee}
+          </strong>
         </p>
       )}
+      {/* <p className="col-12" style={{ color: "red" }}>
+        Arrears to pay - <strong>Rs. {paymentRecords.arrearsConti}</strong>
+      </p>
       {paymentRecords.arrearsUpdated ? (
         <p className="col-12">
           Arrears Updated -{" "}
@@ -52,7 +60,7 @@ function PaymentRecordsForReceipt({ paymentRecords, membershipNo }) {
         <p className="col-12">
           Arrears Updated - <strong>No Record</strong>
         </p>
-      )}
+      )} */}
       {paymentRecords.lastPaidForYear ? (
         <p className="col-12">
           Last payment for membership year -{" "}
@@ -94,14 +102,14 @@ function PaymentRecordsForReceipt({ paymentRecords, membershipNo }) {
             View Payment Records
           </button>
         </HashLink>
-        <button
+        {/* <button
           onClick={() => onCalArrears(paymentRecords.memberID)}
           className="btn btn-dark ml-2 mt-3"
           style={bstyleCal}
           disabled={!paymentRecords.memberID}
         >
           Calculate Arrears
-        </button>
+        </button> */}
       </center>
     </div>
   );

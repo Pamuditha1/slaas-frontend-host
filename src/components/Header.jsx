@@ -29,14 +29,8 @@ class Header extends Component {
     return (
       <>
         <div style={this.style} className="sticky-top">
-          <div className="row">
-            <div className="col-3"></div>
-            <div className="col-6">
-              <img src={logo} style={this.imageStyle} alt="SLAAS Logo" />
-              <div style={{ paddingTop: "20px" }}>SLAAS Member Manager</div>
-            </div>
-            <div className="col-3"></div>
-          </div>
+          <img src={logo} style={this.imageStyle} />
+          <div style={{ paddingTop: "20px" }}>SLAAS Member Manager</div>
         </div>
       </>
     );

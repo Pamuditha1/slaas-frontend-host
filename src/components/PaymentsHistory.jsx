@@ -33,7 +33,7 @@ function PaymentsHistory({ memNo, memberID }) {
         >
           Payment Details
         </h6>
-        {paymentsSummery.arrearsConti ? (
+        {/* {paymentsSummery.arrearsConti ? (
           <p className="col-12" style={{ color: "red" }}>
             Arrears to pay - <strong>Rs. {paymentsSummery.arrearsConti}</strong>
           </p>
@@ -41,7 +41,7 @@ function PaymentsHistory({ memNo, memberID }) {
           <p className="col-12">
             <strong>No Record</strong>
           </p>
-        )}
+        )} */}
         {paymentsSummery.lastPaidForYear ? (
           <p className="col-6">
             Last payment for membership year -{" "}

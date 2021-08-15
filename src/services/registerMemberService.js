@@ -15,8 +15,8 @@ export function registerMember(member) {
     .catch(function (error) {
         if(error.response.data) {
             console.log(error.response.data);
-            toast.error(error.response.msg);
-            // return response.data
+            toast.error(error.response.data);
+            return error.response.data
         }
         if(error.response) {
             console.log(error.response);

@@ -25,7 +25,7 @@ export const PaymentsTable = (props) => {
     const filterRecords = async () => {
         console.log(dateRange)
         let filteredPayments = await filterPayments(dateRange.from, dateRange.to)
-        console.log(filteredPayments)
+        console.log("Filtered Payments", filteredPayments)
         setPayments(filteredPayments)
         setfilterNum(filteredPayments.length)
     }
@@ -84,7 +84,7 @@ export const PaymentsTable = (props) => {
                 isLoading ? 
                 <Loader style={{marginLeft : "35%"}}
                     type="ThreeDots"
-                    color="#00BFFF"
+                    color="#8f2032"
                     height={300}
                     width={300}
                 /> :

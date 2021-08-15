@@ -92,7 +92,7 @@ function Operations() {
       <div className="row">
         <div className="col-2"></div>
         <div className="col-8">
-          <div className="row mt-5" style={itemStyle}>
+          {/* <div className="row mt-5" style={itemStyle}>
             <div className="col-12 mb-3">
               Last Arrears Calculate And Updated :{" "}
               <strong className="ml-5">{lastArrears}</strong>
@@ -111,7 +111,7 @@ function Operations() {
                 Calculate Arrears
               </Button>
             </div>
-          </div>
+          </div> */}
 
           <div className="row mt-5" style={itemStyle}>
             <div className="col-12 mb-3">

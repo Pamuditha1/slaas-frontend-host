@@ -52,28 +52,61 @@ function MemberReceipt() {
   const onChangeMemNo = (e) => {
     console.log(e.target.value);
     setPaymentData({ membershipNo: e.target.value });
-    const fetchData = () => {
-      axios(`${api}/user/receipt/${e.target.value}`).then(function (res) {
-        console.log("Member Data Received", res.data);
-        const paymentRecords = {
-          memPaidLast: res.data.memPaidLast,
-          lastPaidForYear: res.data.lastPaidForYear,
-          lastMembershipPaid: res.data.lastMembershipPaid,
-          arrearsConti: res.data.arrearsConti,
-          arrearsUpdated: res.data.arrearsUpdated,
-          memberID: res.data.memberID,
-        };
-        setPaymentData({
-          ...paymentData,
-          memberID: res.data.memberID,
-          memberName: res.data.nameWinitials,
-          nic: res.data.nic,
-          membershipNo: res.data.membershipNo,
-        });
-        setPaymentRecords(paymentRecords);
-      });
-    };
-    fetchData();
+    // const fetchData = () => {
+    //   axios(`${api}/user/receipt/${e.target.value}`).then(function (res) {
+    //     console.log("Member Data Received", res.data);
+    //     const paymentRecords = {
+    //       memPaidLast: res.data.memPaidLast,
+    //       lastPaidForYear: res.data.lastPaidForYear,
+    //       lastMembershipPaid: res.data.lastMembershipPaid,
+    //       arrearsConti: res.data.arrearsConti,
+    //       arrearsUpdated: res.data.arrearsUpdated,
+    //       memberID: res.data.memberID,
+    //     };
+    //     setPaymentData({
+    //       ...paymentData,
+    //       memberID: res.data.memberID,
+    //       memberName: res.data.nameWinitials,
+    //       nic: res.data.nic,
+    //       membershipNo: res.data.membershipNo,
+    //     });
+    //     setPaymentRecords(paymentRecords);
+    //   });
+    // };
+    // fetchData();
+  };
+
+  const getMemberData = async (e) => {
+    // e.preventDefault();
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const fetchData = () => {
+        axios(`${api}/user/receipt/${e.target.value}`)
+          .then(function (res) {
+            console.log("Member Data Received", res.data);
+            const paymentRecords = {
+              memPaidLast: res.data.memPaidLast,
+              lastPaidForYear: res.data.lastPaidForYear,
+              lastMembershipPaid: res.data.lastMembershipPaid,
+              arrearsConti: res.data.arrearsConti,
+              arrearsUpdated: res.data.arrearsUpdated,
+              memberID: res.data.memberID,
+              gradeOfMembership: res.data.gradeOfMembership,
+              gradeFee: res.data.gradeFee,
+            };
+            setPaymentData({
+              ...paymentData,
+              memberID: res.data.memberID,
+              memberName: res.data.nameWinitials,
+              nic: res.data.nic,
+              membershipNo: res.data.membershipNo,
+            });
+            setPaymentRecords(paymentRecords);
+          })
+          .catch((e) => console.log(e));
+      };
+      fetchData();
+    }
   };
 
   const onClick = () => {
@@ -111,6 +144,7 @@ function MemberReceipt() {
     });
   };
   const onSubmit = (e) => {
+    e.preventDefault();
     console.log("payment Data", paymentData);
     setStep(2);
   };
@@ -149,6 +183,7 @@ function MemberReceipt() {
                   <div className="row ml-3">
                     <input
                       onChange={onChangeMemNo}
+                      onKeyDown={getMemberData}
                       value={paymentData.membershipNo}
                       className="form-control col-10"
                       type="text"
@@ -292,7 +327,7 @@ function MemberReceipt() {
           <button
             style={buttonStyleC}
             onClick={onSubmit}
-            type="submit"
+            type="button"
             className="btn btn-primary float-right m-1 mt-3 mb-5 pr-5 pl-5"
           >
             Continue

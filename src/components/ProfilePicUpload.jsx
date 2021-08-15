@@ -13,16 +13,26 @@ function ProfilePicUpload(props) {
     props.setFile(null);
     props.setFilename(null);
   };
+
+  const style = {
+    borderRadius: "150px",
+    boxShadow: "0px 7px 13px black",
+  };
+
   return (
     <div className="row mb-2">
       <div className="col-2">
         <p>Member Profile Picture</p>
       </div>
       <div className="col-4">
-        <img
-          style={({ width: "100%" }, { height: "200px" })}
-          src={props.filePreview}
-        />
+        {props.filePreview && (
+          <img
+            style={style}
+            src={props.filePreview}
+            width="200px"
+            height="200px"
+          />
+        )}
       </div>
       <div className="col-5 mt-5">
         <form onSubmit={props.onImageSubmit}>

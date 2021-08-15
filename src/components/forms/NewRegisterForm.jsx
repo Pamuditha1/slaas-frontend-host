@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import { DatePicker } from "react-rainbow-components";
+import { toast } from "react-toastify";
 
 import { NewConfirm } from "./NewConfirm";
 import ValidationError from "../../validationError";
@@ -15,7 +16,7 @@ import { getGrades } from "../../services/getGrades";
 import { getSections } from "../../services/getSections";
 import NewProfilePicUpload from "../NewProfilePicUpload";
 
-function NewRegisterForm() {
+function NewRegisterForm(props) {
   useEffect(() => {
     async function fetchGrades() {
       const gradeRecords = await getGrades();
@@ -141,13 +142,15 @@ function NewRegisterForm() {
   const [filename, setFilename] = useState("Choose File");
   const [nameOfImage, setNameOfImage] = useState("");
 
-  // const onImageSubmit = async () => {
-  //   // e.preventDefault()
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  //   console.log(file);
-  //   await addProfilePic(formData, nameOfImage);
-  // };
+  const onImageSubmit = async () => {
+    // e.preventDefault()
+    const formData = new FormData();
+    formData.append("file", file);
+    console.log(file);
+    addProfilePic(formData, nameOfImage).then(() => {
+      props.history.push("/user/receipt/new");
+    });
+  };
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
@@ -162,10 +165,14 @@ function NewRegisterForm() {
       membershipNo: membershipNo.split("/")[0],
     };
     console.log("Member before save", member);
+    if (!proposer.memN0 || !seconder.memNo) {
+      return toast.error("Proposer and Seconder Required to Continue");
+    }
     registerMember(member).then(() => {
-      uploadImage();
+      // uploadImage();
+      onImageSubmit();
     });
-    // onImageSubmit();
+
     setLoading(false);
     // if (result)
     //   setTimeout(function () {
@@ -197,26 +204,26 @@ function NewRegisterForm() {
     borderRadius: "40px",
   };
 
-  const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
+  // const [image, setImage] = useState("");
+  // const [url, setUrl] = useState("");
 
-  const uploadImage = () => {
-    const data = new FormData();
-    data.append("file", image);
-    data.append("upload_preset", "SLAAS Profile Pics");
-    data.append("cloud_name", "dl2axglxd");
-    fetch("  https://api.cloudinary.com/v1_1/dl2axglxd/image/upload", {
-      method: "post",
-      body: data,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setUrl(data.url);
-        addProfilePic(data.url, nameOfImage);
-        console.log(data);
-      })
-      .catch((err) => console.log(err));
-  };
+  // const uploadImage = () => {
+  //   const data = new FormData();
+  //   data.append("file", image);
+  //   data.append("upload_preset", "SLAAS Profile Pics");
+  //   data.append("cloud_name", "dl2axglxd");
+  //   fetch("  https://api.cloudinary.com/v1_1/dl2axglxd/image/upload", {
+  //     method: "post",
+  //     body: data,
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       setUrl(data.url);
+  //       addProfilePic(data.url, nameOfImage);
+  //       console.log(data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   switch (step) {
     case 1:
@@ -231,7 +238,7 @@ function NewRegisterForm() {
           <Formik
             className="container mt-5 mb-5"
             initialValues={memberData}
-            // validationSchema={validationSchema}
+            validationSchema={validationSchema}
             onSubmit={(values) => {
               setNameOfImage(`${values.nic}`);
               setMemberData(values);
@@ -251,8 +258,9 @@ function NewRegisterForm() {
               };
               return (
                 <>
-                  <NewProfilePicUpload
-                    // onImageSubmit={onImageSubmit}
+                  {/* <NewProfilePicUpload */}
+                  <ProfilePicUpload
+                    onImageSubmit={onImageSubmit}
                     file={file}
                     setFile={setFile}
                     filePreview={filePreview}
@@ -260,10 +268,10 @@ function NewRegisterForm() {
                     filename={filename}
                     setFilename={setFilename}
                     nameOfImage={nameOfImage}
-                    image={image}
-                    setImage={setImage}
-                    url={url}
-                    setUrl={setUrl}
+                    // image={image}
+                    // setImage={setImage}
+                    // url={url}
+                    // setUrl={setUrl}
                   />
                   <Form style={{ marginBottom: 50 }} autoComplete="off">
                     <div className="row">
