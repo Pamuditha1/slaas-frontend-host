@@ -6,7 +6,6 @@ import ReceiptPrint from "./ReceiptPrint";
 
 class ReceiptGenerator extends React.PureComponent {
   render() {
-    console.log("Receipt generater rendered");
     const buttonStyleC = {
       boxShadow: "0px 5px 10px grey",
       fontWeight: "bold",

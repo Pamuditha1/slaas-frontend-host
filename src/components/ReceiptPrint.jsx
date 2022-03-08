@@ -72,10 +72,6 @@ class ReceiptPrint extends React.PureComponent {
   };
 
   render() {
-    console.log("Render" + this.state);
-    console.log("Receipt Print Render");
-    console.log(this.state || "No state render");
-
     const backgroundStyle = {
       height: "561px",
       width: "792px",

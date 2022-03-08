@@ -28,14 +28,11 @@ export default class Example extends React.Component {
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
     this.props.setdateRange(range);
-    console.log("Range", range);
-    console.log("Selected Renge", this.props.dateRange);
   }
 
   handleResetClick() {
     this.setState(this.getInitialState());
     this.props.setdateRange(this.getInitialState());
-    console.log("Selected Renge", this.props.dateRange);
   }
   changeShow() {
     this.setState({
@@ -53,7 +50,7 @@ export default class Example extends React.Component {
     const bstyleB = {
       borderRadius: "30px",
       boxShadow: "0px 5px 10px grey",
-      backgroundColor: "#002263",
+      backgroundColor: "#580b0d",
     };
 
     switch (this.state.show) {
@@ -63,7 +60,11 @@ export default class Example extends React.Component {
             <div className="RangeExample">
               <p
                 className="alert alert-primary mr-5 ml-5 font-weight-bold"
-                style={bstyle}
+                style={{
+                  ...bstyle,
+                  backgroundColor: "#B3373B",
+                  color: "white",
+                }}
               >
                 {!from && !to && "Please select the first day."}
                 {from && !to && "Please select the last day."}
@@ -74,16 +75,16 @@ export default class Example extends React.Component {
                 {from && to && (
                   <>
                     <button
-                      className="link btn btn-danger ml-5 pr-5 pl-5"
+                      className="link btn btn-light ml-5 pr-5 pl-5"
                       onClick={this.handleResetClick}
-                      style={bstyle}
+                      style={{ ...bstyle, boxShadow: 0 }}
                     >
                       Reset
                     </button>
                     <button
                       onClick={this.props.filterRecords}
-                      className="btn btn-success ml-3 pr-5 pl-5"
-                      style={bstyle}
+                      className="btn btn-dark ml-3 pr-5 pl-5"
+                      style={{ ...bstyle, boxShadow: 0 }}
                     >
                       Filter
                     </button>
@@ -100,7 +101,7 @@ export default class Example extends React.Component {
               />
               <button
                 onClick={this.changeShow}
-                className="btn btn-warning ml-3"
+                className="btn btn-dark ml-3"
                 style={bstyle}
               >
                 Close

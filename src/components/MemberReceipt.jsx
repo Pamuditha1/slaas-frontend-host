@@ -50,7 +50,6 @@ function MemberReceipt() {
   }, []);
 
   const onChangeMemNo = (e) => {
-    console.log(e.target.value);
     setPaymentData({ membershipNo: e.target.value });
     // const fetchData = () => {
     //   axios(`${api}/user/receipt/${e.target.value}`).then(function (res) {
@@ -83,7 +82,6 @@ function MemberReceipt() {
       const fetchData = () => {
         axios(`${api}/user/receipt/${e.target.value}`)
           .then(function (res) {
-            console.log("Member Data Received", res.data);
             const paymentRecords = {
               memPaidLast: res.data.memPaidLast,
               lastPaidForYear: res.data.lastPaidForYear,
@@ -145,7 +143,6 @@ function MemberReceipt() {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("payment Data", paymentData);
     setStep(2);
   };
 

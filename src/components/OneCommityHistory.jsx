@@ -13,9 +13,6 @@ function OneCommityHistory({ comm }) {
       const records = await getCommMembersHistory(comm);
       setdateRanges(records.ranges);
       setmembers(records.members);
-
-      console.log("Ranges", records.ranges);
-      console.log("Members", records.members);
     }
     fetchSections();
   }, [comm]);

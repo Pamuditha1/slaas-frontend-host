@@ -18,7 +18,8 @@ function PaymentsHistory({ memNo, memberID }) {
   }, [memberID]);
 
   const subheadStyle = {
-    backgroundColor: "#002263",
+    //backgroundColor: "#002263",
+    backgroundColor: "#580b0d",
     borderRadius: "20px",
     boxShadow: "0px 5px 5px grey",
     color: "white",

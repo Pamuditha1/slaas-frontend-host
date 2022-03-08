@@ -43,7 +43,6 @@ function NewRegisterUser() {
         .required("Required!"),
     }),
     onSubmit: async (values) => {
-      console.log("System User Register", values);
       await addUser(values);
     },
   });

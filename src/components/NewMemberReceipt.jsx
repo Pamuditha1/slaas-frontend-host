@@ -54,7 +54,6 @@ function NewMemberReceipt() {
     });
   };
   const onSubmit = (e) => {
-    console.log("payment Data", paymentData);
     setStep(2);
   };
 

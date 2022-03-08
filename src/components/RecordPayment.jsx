@@ -9,7 +9,6 @@ class RecordPayment extends Component {
       previousRecords: this.props.paymentRecords,
     });
     this.props.changePaymentRecorded();
-    console.log(this.props);
   };
 
   render() {

@@ -36,7 +36,6 @@ function UserComponent(props) {
   }
 
   const currentLocation = props.location.pathname;
-  console.log("location", currentLocation);
   const link = "/user/register-member";
   const accountType = "user";
 

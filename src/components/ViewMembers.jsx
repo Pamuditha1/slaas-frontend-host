@@ -24,14 +24,12 @@ function ViewMembers(props) {
   };
 
   const handleSubmit = async () => {
-    console.log(searchWord);
     const searching = {
       word: searchWord,
     };
     const results = await searchMember(searching);
     setsearchedResults(results ? results : []);
     setMembers(results ? results : []);
-    console.log(results);
     props.history.push("/user/members/search");
   };
 
@@ -42,7 +40,7 @@ function ViewMembers(props) {
   const buttonStyleC = {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
-    backgroundColor: "#002263",
+    //backgroundColor: "#002263",
     borderRadius: "40px",
   };
   const bstyle = {
@@ -62,7 +60,7 @@ function ViewMembers(props) {
               <Button
                 style={buttonStyleC}
                 onClick={() => setallSelected(true)}
-                className="mb-3 col-12 btn"
+                className="mb-3 col-12 btn btn-secondary"
               >
                 {allSelected ? "All Member Records" : "Get All Records"}
               </Button>

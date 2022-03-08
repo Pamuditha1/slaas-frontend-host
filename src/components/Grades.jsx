@@ -27,7 +27,6 @@ function Grades() {
     else setmembershipFee(e.target.value);
   };
   const onAdd = async () => {
-    console.log(grade);
     await addGrade({
       grade: grade,
       membershipFee: membershipFee,
@@ -52,7 +51,6 @@ function Grades() {
     setmodalGrade({ ...modalGrade, membershipFee: g });
   };
   const updateGrade = async () => {
-    console.log("Updated Grade", modalGrade);
     await updateGradeS(modalGrade);
     const records = await getGrades();
     setgrades(records);

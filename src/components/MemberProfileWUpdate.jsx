@@ -27,7 +27,6 @@ export const MemberProfileWUpdate = (props) => {
   async function fetchProfile() {
     setIsLoading(true);
     const profileData = await getMemberProfile(props.match.params.id);
-    console.log(typeof profileData);
     setMemberData(profileData.member);
     setAcademicData(profileData.academic);
     setProposer(profileData.proposer);
@@ -55,7 +54,6 @@ export const MemberProfileWUpdate = (props) => {
       value: dataToUpdate.value,
       id: memberData.memberID,
     };
-    console.log("Data to Update", data);
     await updateMember(data);
     fetchProfile();
     setdataToUpdate({});
@@ -108,14 +106,12 @@ export const MemberProfileWUpdate = (props) => {
   const displayMembershipNo = `${membershipNo}/${section}`;
 
   async function terminateOnClick(membershipNo) {
-    console.log(membershipNo);
     await terminateMember(membershipNo);
     fetchProfile();
 
     return;
   }
   async function getBackOnClick(memberID) {
-    console.log(memberID);
     await getMembershipBack(memberID);
     fetchProfile();
     return;
@@ -125,7 +121,8 @@ export const MemberProfileWUpdate = (props) => {
   };
 
   const subheadStyle = {
-    backgroundColor: "#002263",
+    //backgroundColor: "#002263",
+    backgroundColor: "#580b0d",
     borderRadius: "20px",
     boxShadow: "0px 5px 5px grey",
     color: "white",

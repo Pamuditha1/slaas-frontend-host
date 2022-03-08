@@ -23,13 +23,10 @@ function NewAdminLogin(props) {
   const submit = async (e) => {
     e.preventDefault();
     const result = await adminLogin(loginData);
-    console.log("Res", result);
     if (result) {
       localStorage.setItem("token", result.jwt);
-      console.log(props);
       switch (result.type) {
         case "Admin":
-          console.log(result.type);
           props.history.push("/user/members");
           break;
       }

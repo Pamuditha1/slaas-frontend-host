@@ -26,7 +26,6 @@ function SuiteSidebar() {
   const s = {};
   const onClick = (e) => {
     setclicked(e.target.id);
-    console.log(clicked);
   };
 
   const logout = (e) => {

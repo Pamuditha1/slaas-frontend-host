@@ -19,7 +19,6 @@ function Proposer(props) {
 
   const onSearch = async () => {
     setLoading(true);
-    console.log("On Change Called");
     setViewData({
       name: "",
       memNo: "",
@@ -36,8 +35,6 @@ function Proposer(props) {
     const fetchData = () => {
       axios(`${api}/user/refrees/${searchWord}`)
         .then(function (res) {
-          console.log("Proposer Data", res.data);
-          console.log(typeof res.data);
           const receivedData = {
             name: res.data.nameWinitials,
             address: res.data.resAddrs,
@@ -48,12 +45,9 @@ function Proposer(props) {
           setsearchedResults(res.data ? res.data : []);
           props.setProposer(receivedData);
         })
-        .then(function () {
-          console.log("Added Proposer Data", props.proposer);
-        });
+        .then(function () {});
     };
     await fetchData();
-    console.log("Added Proposer Data", props.proposer);
     setLoading(false);
   };
 
@@ -61,8 +55,6 @@ function Proposer(props) {
     setViewData({ ...viewData, [e.target.name]: e.target.value });
 
     props.setProposer({ ...viewData, [e.target.name]: e.target.value });
-
-    console.log(props.proposer);
   };
   const buttonStyle = {
     boxShadow: "0px 5px 10px grey",
@@ -90,7 +82,7 @@ function Proposer(props) {
             style={buttonStyle}
             type="button"
             onClick={onSearch}
-            className="btn btn-primary"
+            className="btn btn-secondary"
           >
             <FontAwesomeIcon icon={faSearch} size="1x" />
           </button>

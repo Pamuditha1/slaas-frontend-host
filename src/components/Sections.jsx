@@ -25,8 +25,6 @@ function Sections() {
     }
   };
   const onAdd = async () => {
-    console.log(key);
-    console.log(section);
     await addSection({
       key: key,
       section: section,

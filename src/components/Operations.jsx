@@ -54,12 +54,10 @@ function Operations() {
   const sendMails = async () => {
     let result = await sendReminderMails();
     fetchReminderDates();
-    console.log("Reminder result", result);
   };
   const terminate = async () => {
     let result = await autoTerminate();
     fetchTerminateDates();
-    console.log(result);
   };
 
   let itemStyle = {

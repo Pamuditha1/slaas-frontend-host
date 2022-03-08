@@ -37,15 +37,11 @@ function NewApplicantLogin(props) {
       localStorage.setItem("ApplicantToken", result.jwt);
       const jwt = localStorage.getItem("ApplicantToken");
       let type = jwtDecode(jwt).type;
-
-      console.log(props);
       switch (type) {
         case "Applicant":
-          console.log(result.type);
           props.history.push("/applicant/membership-apply");
           break;
         case "Applied":
-          console.log(result.type);
           props.history.push("/applicant/progress");
           break;
 
@@ -57,7 +53,6 @@ function NewApplicantLogin(props) {
       setinvalidLogin(true);
       toast.error("Invalid Login");
     }
-    console.log(loginData);
     // setLoading(false);
   };
 

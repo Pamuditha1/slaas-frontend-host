@@ -67,7 +67,6 @@ function SendMails(props) {
       ...emailForm,
       [e.target.name]: e.target.value,
     });
-    console.log(emailForm);
   };
   const onChangeTo = (e) => {
     setextraTo(e.target.value);

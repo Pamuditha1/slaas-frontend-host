@@ -31,12 +31,9 @@ function NewMemberLogin(props) {
   const submit = async (e) => {
     e.preventDefault();
     // setLoading(true);
-    console.log("Mem dts", loginData);
     const result = await memberLogin(loginData);
-    console.log("Res", result);
     if (result) {
       localStorage.setItem("MemberToken", result.jwt);
-      console.log(props);
       switch (result.type) {
         case "Member":
           const jwt = localStorage.getItem("MemberToken");
@@ -48,7 +45,6 @@ function NewMemberLogin(props) {
       setinvalidLogin(true);
       toast.error("Invalid Login");
     }
-    console.log(loginData);
     // setLoading(false);
   };
 

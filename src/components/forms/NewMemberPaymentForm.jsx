@@ -52,11 +52,9 @@ function NewMemberPaymentForm() {
 
   const onChangeMemNo = (e) => {
     setLoading(true);
-    console.log(e.target.value);
     setPaymentData({ membershipNo: e.target.value });
     const fetchData = () => {
       axios(`${api}/user/receipt/${e.target.value}`).then(function (res) {
-        console.log("Member Data Received", res.data);
         const paymentRecords = {
           memPaidLast: res.data.memPaidLast,
           lastPaidForYear: res.data.lastPaidForYear,
@@ -80,9 +78,6 @@ function NewMemberPaymentForm() {
       });
     };
     fetchData();
-    console.log("Payment Records", paymentRecords);
-    console.log("Payment Data", paymentData);
-    // console.log("Viewing Data", viewData)
     setLoading(false);
   };
 
@@ -119,7 +114,6 @@ function NewMemberPaymentForm() {
     });
   };
   const onSubmit = (e) => {
-    console.log("payment Data", paymentData);
     setStep(2);
   };
 

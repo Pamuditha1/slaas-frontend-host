@@ -45,7 +45,6 @@ function NewRegisterForm(props) {
           value: s.keyName,
         });
       });
-      console.log("Sec", sectionRecords);
       setsections(sections);
     }
     fetchSections();
@@ -146,8 +145,8 @@ function NewRegisterForm(props) {
     // e.preventDefault()
     const formData = new FormData();
     formData.append("file", file);
-    console.log(file);
     addProfilePic(formData, nameOfImage).then(() => {
+      setLoading(false);
       props.history.push("/user/receipt/new");
     });
   };
@@ -157,23 +156,25 @@ function NewRegisterForm(props) {
   const submit = async () => {
     setLoading(true);
     setNameOfImage(memberData.nic);
-    console.log(nameOfImage);
     const member = {
       memberData: memberData,
       proposer: proposer,
       seconder: seconder,
       membershipNo: membershipNo.split("/")[0],
     };
-    console.log("Member before save", member);
-    if (!proposer.memN0 || !seconder.memNo) {
+    if (!proposer.memNo || !seconder.memNo) {
+      setLoading(false);
       return toast.error("Proposer and Seconder Required to Continue");
     }
-    registerMember(member).then(() => {
-      // uploadImage();
+    const response = await registerMember(member);
+    if (response.status === 200) {
       onImageSubmit();
-    });
+    }
+    // .then(() => {
+    //   // uploadImage();
+    //   onImageSubmit();
+    // });
 
-    setLoading(false);
     // if (result)
     //   setTimeout(function () {
     //     reload();
@@ -186,7 +187,7 @@ function NewRegisterForm(props) {
     textShadow: "0px 0px 1px #111111",
   };
   const subheadStyle = {
-    backgroundColor: "#002263",
+    backgroundColor: "#580b0d",
     borderRadius: "20px",
     boxShadow: "0px 5px 5px grey",
     color: "white",
@@ -242,8 +243,6 @@ function NewRegisterForm(props) {
             onSubmit={(values) => {
               setNameOfImage(`${values.nic}`);
               setMemberData(values);
-              console.log("Date of birth", dateOfBirth);
-              console.log("type of dob", typeof dateOfBirth);
               setIsConfirmed(true);
               nextStep();
             }}
@@ -849,7 +848,7 @@ function NewRegisterForm(props) {
                                         <button
                                           style={buttonStyle}
                                           type="button"
-                                          className="btn btn-warning m-1"
+                                          className="btn btn-secondary m-1"
                                           onClick={() => remove(index)}
                                         >
                                           {" "}
@@ -860,7 +859,7 @@ function NewRegisterForm(props) {
                                         <button
                                           style={buttonStyle}
                                           type="button"
-                                          className="btn btn-success m-1"
+                                          className="btn btn-dark m-1"
                                           onClick={() => push("")}
                                         >
                                           {" "}
@@ -929,7 +928,7 @@ function NewRegisterForm(props) {
                                         <button
                                           style={buttonStyle}
                                           type="button"
-                                          className="btn btn-warning m-1"
+                                          className="btn btn-secondary m-1"
                                           onClick={() => remove(index)}
                                         >
                                           {" "}
@@ -940,7 +939,7 @@ function NewRegisterForm(props) {
                                         <button
                                           style={buttonStyle}
                                           type="button"
-                                          className="btn btn-success m-1"
+                                          className="btn btn-dark m-1"
                                           onClick={() => push("")}
                                         >
                                           {" "}
@@ -1175,7 +1174,7 @@ function NewRegisterForm(props) {
                           }}
                         </Field>
                         <ErrorMessage
-                          name="gender"
+                          name="sendingAddrs"
                           component={ValidationError}
                         />
                       </div>

@@ -68,9 +68,9 @@ export const NewConfirm = ({
     textShadow: "0px 0px 1px #111111",
   };
   const subheadStyle = {
-    backgroundColor: "#fdd30f",
+    backgroundColor: "#580b0d",
     borderRadius: "20px",
-    color: "black",
+    color: "white",
     boxShadow: "0px 5px 5px grey",
   };
   const buttonStyle = {
@@ -85,7 +85,6 @@ export const NewConfirm = ({
     backgroundColor: "#005336",
     borderRadius: "30px",
   };
-  console.log("File Previewing", filePreview);
   return (
     <div className="mb-5">
       <h4 className="mt-5 mb-5 text-center" style={headStyle}>

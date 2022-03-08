@@ -22,7 +22,6 @@ function ViewImage(props) {
         });
     }
     fetchImage();
-    console.log(imagePath);
   }, []);
 
   const style = {

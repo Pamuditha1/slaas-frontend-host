@@ -29,7 +29,6 @@ function EmailSettingElement(props) {
     setmailData({ ...mailData, [e.target.name]: e.target.value });
   };
   const update = async () => {
-    console.log(mailData);
     await updateMailBody(mailData);
     fetchData();
   };

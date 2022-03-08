@@ -31,7 +31,6 @@ function OneCommittee({ comm }) {
         membershipNo: "",
         name: "",
       });
-      console.log(records);
     }
     fetchSections();
   }, [comm]);
@@ -72,8 +71,6 @@ function OneCommittee({ comm }) {
   };
 
   const onAdd = async () => {
-    console.log("New MEem", newMember);
-
     await addNewCommityPosition({
       committe: comm,
       position: newMember.position,
@@ -94,8 +91,6 @@ function OneCommittee({ comm }) {
   };
 
   const onUpdate = async () => {
-    console.log("New MEem", newMember);
-
     await updateCommityPosition({
       committe: comm,
       position: newMember.position,

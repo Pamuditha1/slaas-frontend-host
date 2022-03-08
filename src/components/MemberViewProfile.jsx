@@ -24,7 +24,6 @@ export const MemberViewProfile = (props) => {
 
   const [username, setusername] = useState("");
   const [type, settype] = useState("");
-  console.log(props.match.params.id);
   useEffect(() => {
     const jwt = localStorage.getItem("MemberToken");
     let type = "";
@@ -42,7 +41,6 @@ export const MemberViewProfile = (props) => {
     async function fetchProfile() {
       setIsLoading(true);
       const profileData = await getMemberProfile(props.match.params.id);
-      console.log(typeof profileData);
       setMemberData(profileData.member);
       setmemberIDR(profileData.member.memberID);
       setAcademicData(profileData.academic);
@@ -118,12 +116,9 @@ export const MemberViewProfile = (props) => {
   };
 
   const logout = () => {
-    // console.log("Logging Out");
     localStorage.removeItem("MemberToken");
     props.history.push("/");
   };
-
-  console.log("props", props);
 
   const logoutStyle = {
     position: "fixed",
@@ -144,7 +139,6 @@ export const MemberViewProfile = (props) => {
       request: updateDetailsReq,
       membershipNo: username,
     };
-    console.log("UPDATE", memReq);
     await addMemberRequest(memReq);
   };
 

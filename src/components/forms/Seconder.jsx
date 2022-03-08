@@ -19,7 +19,6 @@ function Seconder(props) {
 
   const onSearch = async () => {
     setLoading(true);
-    console.log("On Change Called");
     setViewData({
       name: "",
       memNo: "",
@@ -36,8 +35,6 @@ function Seconder(props) {
     const fetchData = () => {
       axios(`${api}/user/refrees/${searchWord}`)
         .then(function (res) {
-          console.log("Proposer Data", res.data);
-          console.log(typeof res.data);
           const receivedData = {
             name: res.data.nameWinitials,
             address: res.data.resAddrs,
@@ -48,12 +45,9 @@ function Seconder(props) {
           setsearchedResults(res.data ? res.data : []);
           props.setSeconder(receivedData);
         })
-        .then(function () {
-          console.log("Added Proposer Data", props.proposer);
-        });
+        .then(function () {});
     };
     await fetchData();
-    console.log("Added Proposer Data", props.proposer);
     setLoading(false);
   };
 
@@ -89,7 +83,7 @@ function Seconder(props) {
             style={buttonStyle}
             type="button"
             onClick={onSearch}
-            className="btn btn-primary"
+            className="btn btn-secondary"
           >
             <FontAwesomeIcon icon={faSearch} size="1x" />
           </button>
