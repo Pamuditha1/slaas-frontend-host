@@ -15,7 +15,8 @@ function SendMails(props) {
   useEffect(() => {
     async function fetchGrades() {
       const gradeRecords = await getGrades();
-      let grades = ["Grades"];
+      //let grades = ["Grades"];
+      let grades = [];
       gradeRecords.forEach((g) => {
         grades.push(g.grade);
       });
@@ -26,7 +27,8 @@ function SendMails(props) {
 
     async function fetchSections() {
       const sectionRecords = await getSections();
-      let sections = ["Sections"];
+      //let sections = ["Sections"];
+      let sections = [];
       sectionRecords.forEach((s) => {
         sections.push(s.keyName);
       });
@@ -105,7 +107,8 @@ function SendMails(props) {
   const buttonStyleC = {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
-    backgroundColor: "#005336",
+    //backgroundColor: "#005336",
+    backgroundColor: "#580b0d",
     borderRadius: "30px",
   };
 
@@ -230,7 +233,7 @@ function SendMails(props) {
             style={buttonStyleC}
             type="submit"
             onClick={onSubmit}
-            className="btn btn-primary float-right mb-5 mt-3 pl-5 pr-5"
+            className="btn btn-danger float-right mb-5 mt-3 pl-5 pr-5"
           >
             Send
           </button>

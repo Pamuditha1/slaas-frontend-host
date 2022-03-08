@@ -20,7 +20,8 @@ function SendMailButtons({ array, title, setselected }) {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
     borderRadius: "40px",
-    backgroundColor: "#002263",
+    //backgroundColor: "#002263",
+    backgroundColor: "#580b0d",
   };
 
   return (
@@ -28,7 +29,7 @@ function SendMailButtons({ array, title, setselected }) {
       <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
         <DropdownToggle
           caret
-          color="primary"
+          color="danger"
           style={buttonStyle}
           className="pl-3 pr-3"
         >

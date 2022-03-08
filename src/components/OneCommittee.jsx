@@ -123,7 +123,8 @@ function OneCommittee({ comm }) {
   };
 
   const subheadStyle = {
-    backgroundColor: "#002263",
+    //backgroundColor: "#002263",
+    backgroundColor: "#580b0d",
     borderRadius: "20px",
     boxShadow: "0px 5px 5px grey",
     color: "white",
@@ -131,13 +132,13 @@ function OneCommittee({ comm }) {
   const buttonStyleC = {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
-    backgroundColor: "#005336",
+    //backgroundColor: "#005336",
     borderRadius: "40px",
   };
   const buttonStyleU = {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
-    backgroundColor: "#fdd30f",
+    //backgroundColor: "#fdd30f",
     borderRadius: "40px",
   };
   const buttonStyle = {
@@ -218,7 +219,7 @@ function OneCommittee({ comm }) {
               <button
                 onClick={onAdd}
                 style={buttonStyleC}
-                className="btn btn-success col-2 mt-3"
+                className="btn btn-dark col-2 mt-3"
               >
                 Save
               </button>
@@ -234,7 +235,7 @@ function OneCommittee({ comm }) {
                 <button
                   style={buttonStyleU}
                   onClick={onUpdate}
-                  className="btn btn-warning col-1 mt-3"
+                  className="btn btn-dark col-1 mt-3"
                 >
                   Update
                 </button>
@@ -272,7 +273,7 @@ function OneCommittee({ comm }) {
                     <button
                       style={buttonStyle}
                       onClick={() => updateSet(m)}
-                      className="btn btn-outline-warning"
+                      className="btn btn-outline-dark"
                     >
                       Update
                     </button>
@@ -282,7 +283,7 @@ function OneCommittee({ comm }) {
                     >
                       <button
                         style={buttonStyle}
-                        className="btn btn-outline-primary ml-3"
+                        className="btn btn-outline-secondary ml-3"
                       >
                         Profile
                       </button>
