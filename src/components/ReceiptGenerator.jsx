@@ -9,7 +9,7 @@ class ReceiptGenerator extends React.PureComponent {
     const buttonStyleC = {
       boxShadow: "0px 5px 10px grey",
       fontWeight: "bold",
-      backgroundColor: "#005336",
+      //backgroundColor: "#005336",
       borderRadius: "50px",
       float: "right",
     };
@@ -34,11 +34,7 @@ class ReceiptGenerator extends React.PureComponent {
         <ReactToPrint
           trigger={() => {
             return (
-              <Button
-                color="success mt-1 pl-4 pr-4"
-                href="#"
-                style={buttonStyleC}
-              >
+              <Button color="dark mt-1 pl-4 pr-4" href="#" style={buttonStyleC}>
                 Download
               </Button>
             );
@@ -48,7 +44,7 @@ class ReceiptGenerator extends React.PureComponent {
         <button
           type="submit"
           onClick={() => this.props.setStep(1)}
-          className="btn btn-dark float-right m-1 pr-4 pl-4"
+          className="btn btn-secondary float-right m-1 pr-4 pl-4"
           style={buttonStyle}
         >
           Back

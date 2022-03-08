@@ -158,7 +158,8 @@ function MemberReceipt() {
   const buttonStyleC = {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
-    backgroundColor: "#005336",
+    //backgroundColor: "#005336",
+    backgroundColor: "#580b0d",
     borderRadius: "30px",
   };
 
@@ -325,7 +326,7 @@ function MemberReceipt() {
             style={buttonStyleC}
             onClick={onSubmit}
             type="button"
-            className="btn btn-primary float-right m-1 mt-3 mb-5 pr-5 pl-5"
+            className="btn btn-danger float-right m-1 mt-3 mb-5 pr-5 pl-5"
           >
             Continue
           </button>

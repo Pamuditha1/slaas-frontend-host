@@ -16,7 +16,8 @@ class RecordPayment extends Component {
     const buttonStyleR = {
       boxShadow: "0px 5px 10px grey",
       fontWeight: "bold",
-      backgroundColor: "#002263",
+      //backgroundColor: "#002263",
+      backgroundColor: "#580b0d",
       borderRadius: "50px",
       float: "right",
     };
@@ -28,7 +29,7 @@ class RecordPayment extends Component {
             type="submit"
             style={buttonStyleR}
             onClick={this.recordPayment}
-            className="btn btn-primary float-right m-1 mb-5"
+            className="btn btn-danger float-right m-1 mb-5"
           >
             Record the Payment
           </button>

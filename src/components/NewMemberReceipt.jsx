@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import ReceiptGenerator from "./ReceiptGenerator";
+
+import { getInvoice } from "../services/getInvoiceNo";
 
 function NewMemberReceipt() {
   const [step, setStep] = useState(1);
@@ -35,6 +37,14 @@ function NewMemberReceipt() {
 
   const [invoiceNum, setInvoiceNum] = useState("");
 
+  useEffect(() => {
+    async function fetchInvoice() {
+      const invoice = await getInvoice();
+      setInvoiceNum(invoice);
+    }
+    fetchInvoice();
+  }, []);
+
   const onchange = (e) => {
     setPaymentData({
       ...paymentData,
@@ -64,7 +74,8 @@ function NewMemberReceipt() {
   const buttonStyleC = {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
-    backgroundColor: "#005336",
+    //backgroundColor: "#005336",
+    backgroundColor: "#580b0d",
     borderRadius: "30px",
   };
 
@@ -221,7 +232,7 @@ function NewMemberReceipt() {
             style={buttonStyleC}
             onClick={onSubmit}
             type="submit"
-            className="btn btn-primary float-right m-1 mt-3 mb-5 pr-5 pl-5"
+            className="btn btn-danger float-right m-1 mt-3 mb-5 pr-5 pl-5"
           >
             Continue
           </button>
