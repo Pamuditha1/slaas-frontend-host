@@ -60,7 +60,7 @@ function EmailSettings() {
                   <td className="text-center">
                     <Link to={`/user/email-settings/edit/${e.id}`}>
                       <button
-                        className="btn btn-outline-warning"
+                        className="btn btn-outline-dark"
                         style={buttonStyle}
                       >
                         Edit

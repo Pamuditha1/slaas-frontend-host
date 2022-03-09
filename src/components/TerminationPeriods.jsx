@@ -93,7 +93,7 @@ function TerminationPeriods() {
                           style={buttonStyle}
                           onClick={(e) => viewModal(p.period, e.target.name)}
                           name="Terminate Suggestion Period"
-                          className="col-2 btn btn-warning mb-5 mt-2"
+                          className="col-2 btn btn-dark mb-5 mt-2"
                         >
                           Update
                         </button>
@@ -124,7 +124,7 @@ function TerminationPeriods() {
                             <button
                               style={buttonStyle}
                               onClick={() => updatePeriod()}
-                              className="btn btn-outline-primary pr-3 pl-3"
+                              className="btn btn-outline-dark pr-3 pl-3"
                             >
                               Save
                             </button>
@@ -154,7 +154,7 @@ function TerminationPeriods() {
                             viewModal(p.autoPeriod, e.target.name)
                           }
                           name="Auto Termination Period"
-                          className="col-2 btn btn-warning mb-5 mt-2"
+                          className="col-2 btn btn-dark mb-5 mt-2"
                         >
                           Update
                         </button>
@@ -186,7 +186,7 @@ function TerminationPeriods() {
                             <button
                               style={buttonStyle}
                               onClick={() => updatePeriod()}
-                              className="btn btn-outline-primary pr-3 pl-3"
+                              className="btn btn-outline-dark pr-3 pl-3"
                             >
                               Save
                             </button>

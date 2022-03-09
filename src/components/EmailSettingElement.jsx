@@ -46,7 +46,8 @@ function EmailSettingElement(props) {
   const buttonStyleC = {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
-    backgroundColor: "#005336",
+    //backgroundColor: "#005336",
+    backgroundColor: "#580b0d",
     borderRadius: "40px",
   };
 
@@ -95,7 +96,7 @@ function EmailSettingElement(props) {
           <button
             style={buttonStyleC}
             onClick={update}
-            className="btn btn-success mt-5 mb-5"
+            className="btn btn-danger mt-5 mb-5"
           >
             Update Email
           </button>

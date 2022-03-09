@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import ViewMembers from "./ViewMembers";
 import ViewPayments from "./ViewPayments";
@@ -23,6 +23,8 @@ import EmailSettings from "./EmailSettings";
 import EmailSettingElement from "./EmailSettingElement";
 import MemberReceipt from "./MemberReceipt";
 import NewMemberReceipt from "./NewMemberReceipt";
+import PrivateRoute from "./PrivateRoute";
+import jwtDecode from "jwt-decode";
 
 function UserComponent(props) {
   const [emailsList, setemailsList] = useState([]);
@@ -39,6 +41,15 @@ function UserComponent(props) {
   const link = "/user/register-member";
   const accountType = "user";
 
+  let jwt = localStorage.getItem("token");
+  let token;
+  let userType;
+
+  if (jwt) {
+    token = jwtDecode(jwt);
+    userType = token.type;
+  }
+
   return (
     <div className="row">
       <div className={currentLocation !== "/user/login" && "col-2"}>
@@ -47,51 +58,80 @@ function UserComponent(props) {
       <div className={currentLocation !== "/user/login" ? "col-10" : "col-12"}>
         <Switch>
           <Route path="/user/login" exact component={NewAdminLogin} />
-          <Route
+          <PrivateRoute
             path="/user/register-user"
             component={() => <NewRegisterUser accountType={accountType} />}
           />
-          <Route path="/user/register-member" component={NewRegisterForm} />
-          <Route
+          <PrivateRoute
+            path="/user/register-member"
+            component={NewRegisterForm}
+          />
+          <PrivateRoute
             exact
             path="/user/member/profile/:id"
             component={MemberProfileWUpdate}
           />
-          <Route
+          <PrivateRoute
             path="/user/members"
-            render={(props) => (
-              <ViewMembers
-                emailsList={emailsList}
-                setMails={setMails}
-                {...props}
-              />
-            )}
+            render={(props) =>
+              token && userType === "Admin" ? (
+                <ViewMembers
+                  emailsList={emailsList}
+                  setMails={setMails}
+                  {...props}
+                />
+              ) : (
+                <Redirect to={"/user/login"} />
+              )
+            }
           />
-          <Route path="/user/send-mails" component={SendMails} />
-          <Route path="/user/payments/view" component={ViewPayments} />
-          <Route path="/user/outdated-list" component={OutdatedMemberships} />
-          <Route path="/user/terminated-list" component={TerminatedMembers} />
-          <Route
+          <PrivateRoute path="/user/send-mails" component={SendMails} />
+          <PrivateRoute path="/user/payments/view" component={ViewPayments} />
+          <PrivateRoute
+            path="/user/outdated-list"
+            component={OutdatedMemberships}
+          />
+          <PrivateRoute
+            path="/user/terminated-list"
+            component={TerminatedMembers}
+          />
+          <PrivateRoute
             path="/user/operations"
-            render={(props) => <Operations setArr={setArr} {...props} />}
+            render={(props) =>
+              token && userType === "Admin" ? (
+                <Operations setArr={setArr} {...props} />
+              ) : (
+                <Redirect to={"/user/login"} />
+              )
+            }
           />
-          <Route
+          <PrivateRoute
             path="/user/manage-committees"
             component={SetCommitteMembers}
           />
-          <Route path="/user/receipt/member" component={MemberReceipt} />
-          <Route path="/user/receipt/new" component={NewMemberReceipt} />
-          <Route exact path="/user/settings" component={Settings} />
-          <Route path="/user/settings/grades" component={Grades} />
-          <Route path="/user/settings/sections" component={Sections} />
-          <Route
+          <PrivateRoute path="/user/receipt/member" component={MemberReceipt} />
+          <PrivateRoute path="/user/receipt/new" component={NewMemberReceipt} />
+          <PrivateRoute exact path="/user/settings" component={Settings} />
+          <PrivateRoute path="/user/settings/grades" component={Grades} />
+          <PrivateRoute path="/user/settings/sections" component={Sections} />
+          <PrivateRoute
             path="/user/settings/terminations"
             component={TerminationPeriods}
           />
-          <Route path="/user/settings/committees" component={Commities} />
-          <Route path="/user/committees/history" component={FormarCommittees} />
-          <Route exact path="/user/email-settings" component={EmailSettings} />
-          <Route
+          <PrivateRoute
+            path="/user/settings/committees"
+            component={Commities}
+          />
+          <PrivateRoute
+            path="/user/committees/history"
+            component={FormarCommittees}
+          />
+          <PrivateRoute
+            exact
+            path="/user/email-settings"
+            component={EmailSettings}
+          />
+          <PrivateRoute
             path="/user/email-settings/edit/:id"
             component={EmailSettingElement}
           />

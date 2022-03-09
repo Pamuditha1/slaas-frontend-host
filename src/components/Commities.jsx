@@ -71,7 +71,7 @@ function Commities() {
             <button
               style={buttonStyle}
               onClick={onAdd}
-              className="btn btn-outline-success"
+              className="btn btn-outline-dark"
             >
               +
             </button>

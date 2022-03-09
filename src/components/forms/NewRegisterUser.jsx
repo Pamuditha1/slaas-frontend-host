@@ -64,7 +64,8 @@ function NewRegisterUser() {
   const buttonStyleC = {
     boxShadow: "0px 5px 10px grey",
     fontWeight: "bold",
-    backgroundColor: "#005336",
+    //backgroundColor: "#005336",
+    backgroundColor: "#580b0d",
     borderRadius: "40px",
   };
 
@@ -273,7 +274,7 @@ function NewRegisterUser() {
                       style={buttonStyleC}
                       // onClick={submit}
                       type="submit"
-                      className="btn btn-success mb-5"
+                      className="btn btn-danger mb-5"
                     >
                       Register
                     </button>

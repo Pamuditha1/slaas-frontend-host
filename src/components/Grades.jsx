@@ -108,9 +108,9 @@ function Grades() {
           />
           <div className="input-group-append col-2 mb-3">
             <button
-              style={buttonStyle}
+              style={{ ...buttonStyle, backgroundColor: "#580b0d" }}
               onClick={onAdd}
-              className="btn btn-success"
+              className="btn btn-danger"
             >
               +
             </button>
@@ -143,7 +143,7 @@ function Grades() {
                           <button
                             style={buttonStyle}
                             onClick={() => updateGrade()}
-                            className="btn btn-outline-primary pl-3 pr-3"
+                            className="btn btn-outline-dark pl-3 pr-3"
                           >
                             Save
                           </button>
@@ -163,7 +163,7 @@ function Grades() {
                       <button
                         style={buttonStyle}
                         onClick={() => viewModal(g)}
-                        className="col-1 btn btn-warning mb-5"
+                        className="col-1 btn btn-dark mb-5"
                       >
                         Update
                       </button>

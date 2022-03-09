@@ -85,9 +85,9 @@ function Sections() {
           />
           <div className="input-group-append col-2 mb-3">
             <button
-              style={buttonStyle}
+              style={{ ...buttonStyle, backgroundColor: "#580b0d" }}
               onClick={onAdd}
-              className="btn btn-success"
+              className="btn btn-danger"
             >
               +
             </button>
