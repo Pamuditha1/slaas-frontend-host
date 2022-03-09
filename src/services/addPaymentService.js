@@ -8,7 +8,6 @@ export function addPayment(paymentData) {
   return http
     .post(apiEndPoint, paymentData)
     .then(function (response) {
-      console.log(response.msg);
       toast.success(`${response.data.msg}`);
       //toast.dark(`Arrears continue Rs. ${response.data.data}`);
     })

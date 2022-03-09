@@ -14,7 +14,7 @@ import { registerMember } from "../../services/registerMemberService";
 import { addProfilePic } from "../../services/addMemberProfilePic";
 import { getGrades } from "../../services/getGrades";
 import { getSections } from "../../services/getSections";
-import NewProfilePicUpload from "../NewProfilePicUpload";
+// import NewProfilePicUpload from "../NewProfilePicUpload";
 
 function NewRegisterForm(props) {
   useEffect(() => {
