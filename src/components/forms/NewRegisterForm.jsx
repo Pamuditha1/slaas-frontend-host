@@ -65,33 +65,36 @@ function NewRegisterForm(props) {
     title: "",
     nameWinitials: "",
     nameInFull: "",
-    firstName: "",
-    lastName: "",
+    // firstName: "",
+    // lastName: "",
     gender: "",
     nic: "",
     dob: "",
-    resAddOne: "",
-    resAddTwo: "",
-    resAddThree: "",
-    resAddFour: "",
-    resAddFive: "",
+    residenceAddress: "",
+    // resAddOne: "",
+    // resAddTwo: "",
+    // resAddThree: "",
+    // resAddFour: "",
+    // resAddFive: "",
     perAddrsAvai: false,
-    perAddOne: "",
-    perAddTwo: "",
-    perAddThree: "",
-    perAddFour: "",
-    perAddFive: "",
+    permanentAddress: "",
+    // perAddOne: "",
+    // perAddTwo: "",
+    // perAddThree: "",
+    // perAddFour: "",
+    // perAddFive: "",
     mobileNo: "",
     landNo: "",
     email: "",
     designation: "",
     division: "",
     placeWork: "",
-    offAddrslineOne: "",
-    offAddrslineTwo: "",
-    offAddrslineThree: "",
-    offAddrslineFour: "",
-    offAddrslineFive: " ",
+    officeAddress: "",
+    // offAddrslineOne: "",
+    // offAddrslineTwo: "",
+    // offAddrslineThree: "",
+    // offAddrslineFour: "",
+    // offAddrslineFive: " ",
     offMobile: "",
     offLandNo: "",
     offEmail: "",
@@ -147,7 +150,7 @@ function NewRegisterForm(props) {
     formData.append("file", file);
     addProfilePic(formData, nameOfImage).then(() => {
       setLoading(false);
-      props.history.push("/user/receipt/new");
+      props.history.push("/user/receipt/member");
     });
   };
 
@@ -167,8 +170,11 @@ function NewRegisterForm(props) {
       return toast.error("Proposer and Seconder Required to Continue");
     }
     const response = await registerMember(member);
+
     if (response.status === 200) {
       onImageSubmit();
+    } else {
+      setLoading(false);
     }
     // .then(() => {
     //   // uploadImage();
@@ -326,7 +332,7 @@ function NewRegisterForm(props) {
                         />
                       </div>
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                       <label className="form-group col-4">
                         Name in Common Use
                       </label>
@@ -356,7 +362,7 @@ function NewRegisterForm(props) {
                           component={ValidationError}
                         />
                       </div>
-                    </div>
+                    </div> */}
                     <div className="row">
                       <div className="form-group col-4">
                         <label htmlFor="gender" className="form-check-inline">
@@ -431,11 +437,24 @@ function NewRegisterForm(props) {
                       </div>
                     </div>
                     <div className="row">
-                      <label className="col-12">
-                        Residence Address <hr></hr>
-                      </label>
+                      <div className="form-group col-12">
+                        <label>Residence Address</label>
+                        {/* <div className="form-group col-2">
+                        <label htmlFor="residenceAddress"> No </label> */}
+                        <Field
+                          className={`${handleStyle("residenceAddress")}`}
+                          type="text"
+                          id="residenceAddress"
+                          name="residenceAddress"
+                        />
+                        <ErrorMessage
+                          name="residenceAddress"
+                          component={ValidationError}
+                        />
+                      </div>
+                      {/* </div> */}
 
-                      <div className="form-group col-2">
+                      {/* <div className="form-group col-2">
                         <label htmlFor="resAddOne"> No </label>
                         <Field
                           className={`${handleStyle("resAddOne")}`}
@@ -499,7 +518,7 @@ function NewRegisterForm(props) {
                           name="resAddFive"
                           component={ValidationError}
                         />
-                      </div>
+                      </div> */}
                     </div>
                     <div className="form-group row">
                       <div className="form-check-inline">
@@ -520,75 +539,92 @@ function NewRegisterForm(props) {
                     </div>
                     {formik.values.perAddrsAvai && (
                       <div className="row">
-                        <label className="col-12">
-                          Permanent Address <hr></hr>
-                        </label>
-                        <div className="form-group col-2">
-                          <label htmlFor="perAddOne"> No </label>
+                        <div className="form-group col-12">
+                          <label>Permanent Address</label>
+                          {/* <div className="form-group col-2">
+                         <label htmlFor="residenceAddress"> No </label> */}
                           <Field
-                            className={`${handleStyle("perAddOne")}`}
+                            className={`${handleStyle("permanentAddress")}`}
                             type="text"
-                            id="perAddOne"
-                            name="perAddOne"
+                            id="permanentAddress"
+                            name="permanentAddress"
                           />
                           <ErrorMessage
-                            name="perAddOne"
-                            component={ValidationError}
-                          />
-                        </div>
-                        <div className="form-group col-10">
-                          <label htmlFor="perAddTwo">Street line 1</label>
-                          <Field
-                            className={`${handleStyle("perAddTwo")}`}
-                            type="text"
-                            id="perAddTwo"
-                            name="perAddTwo"
-                          />
-                          <ErrorMessage
-                            name="perAddTwo"
-                            component={ValidationError}
-                          />
-                        </div>
-                        <div className="form-group col-6">
-                          <label htmlFor="perAddThree">Street line 2</label>
-                          <Field
-                            className={`${handleStyle("perAddThree")}`}
-                            type="text"
-                            id="perAddThree"
-                            name="perAddThree"
-                          />
-                          <ErrorMessage
-                            name="perAddThree"
-                            component={ValidationError}
-                          />
-                        </div>
-                        <div className="form-group col-3">
-                          <label htmlFor="perAddFour">City</label>
-                          <Field
-                            className={`${handleStyle("perAddFour")}`}
-                            type="text"
-                            id="perAddFour"
-                            name="perAddFour"
-                          />
-                          <ErrorMessage
-                            name="perAddFour"
-                            component={ValidationError}
-                          />
-                        </div>
-                        <div className="form-group col-3">
-                          <label htmlFor="perAddFive">Town</label>
-                          <Field
-                            className={`${handleStyle("perAddFive")}`}
-                            type="text"
-                            id="perAddFive"
-                            name="perAddFive"
-                          />
-                          <ErrorMessage
-                            name="perAddFive"
+                            name="permanentAddress"
                             component={ValidationError}
                           />
                         </div>
                       </div>
+                      // <div className="row">
+                      //   <label className="col-12">
+                      //     Permanent Address <hr></hr>
+                      //   </label>
+                      //   <div className="form-group col-2">
+                      //     <label htmlFor="perAddOne"> No </label>
+                      //     <Field
+                      //       className={`${handleStyle("perAddOne")}`}
+                      //       type="text"
+                      //       id="perAddOne"
+                      //       name="perAddOne"
+                      //     />
+                      //     <ErrorMessage
+                      //       name="perAddOne"
+                      //       component={ValidationError}
+                      //     />
+                      //   </div>
+                      //   <div className="form-group col-10">
+                      //     <label htmlFor="perAddTwo">Street line 1</label>
+                      //     <Field
+                      //       className={`${handleStyle("perAddTwo")}`}
+                      //       type="text"
+                      //       id="perAddTwo"
+                      //       name="perAddTwo"
+                      //     />
+                      //     <ErrorMessage
+                      //       name="perAddTwo"
+                      //       component={ValidationError}
+                      //     />
+                      //   </div>
+                      //   <div className="form-group col-6">
+                      //     <label htmlFor="perAddThree">Street line 2</label>
+                      //     <Field
+                      //       className={`${handleStyle("perAddThree")}`}
+                      //       type="text"
+                      //       id="perAddThree"
+                      //       name="perAddThree"
+                      //     />
+                      //     <ErrorMessage
+                      //       name="perAddThree"
+                      //       component={ValidationError}
+                      //     />
+                      //   </div>
+                      //   <div className="form-group col-3">
+                      //     <label htmlFor="perAddFour">City</label>
+                      //     <Field
+                      //       className={`${handleStyle("perAddFour")}`}
+                      //       type="text"
+                      //       id="perAddFour"
+                      //       name="perAddFour"
+                      //     />
+                      //     <ErrorMessage
+                      //       name="perAddFour"
+                      //       component={ValidationError}
+                      //     />
+                      //   </div>
+                      //   <div className="form-group col-3">
+                      //     <label htmlFor="perAddFive">Town</label>
+                      //     <Field
+                      //       className={`${handleStyle("perAddFive")}`}
+                      //       type="text"
+                      //       id="perAddFive"
+                      //       name="perAddFive"
+                      //     />
+                      //     <ErrorMessage
+                      //       name="perAddFive"
+                      //       component={ValidationError}
+                      //     />
+                      //   </div>
+                      // </div>
                     )}
                     <div className="row">
                       <div className="form-group col-6">
@@ -681,8 +717,22 @@ function NewRegisterForm(props) {
                         component={ValidationError}
                       />
                     </div>
-                    <label>Office Address</label>
                     <div className="row">
+                      <div className="form-group col-12">
+                        <label>Office Address</label>
+                        <Field
+                          className={`${handleStyle("officeAddress")}`}
+                          type="text"
+                          id="officeAddress"
+                          name="officeAddress"
+                        />
+                        <ErrorMessage
+                          name="officeAddress"
+                          component={ValidationError}
+                        />
+                      </div>
+                    </div>
+                    {/* <div className="row">
                       <div className="form-group col-2">
                         <label htmlFor="offAddrslineOne">No</label>
                         <Field
@@ -748,7 +798,7 @@ function NewRegisterForm(props) {
                           component={ValidationError}
                         />
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="row">
                       <div className="form-group col-6">

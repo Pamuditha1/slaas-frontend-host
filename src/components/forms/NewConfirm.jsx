@@ -24,28 +24,31 @@ export const NewConfirm = ({
     gender,
     nic,
     dob,
-    resAddOne,
-    resAddTwo,
-    resAddThree,
-    resAddFour,
-    resAddFive,
+    residenceAddress,
+    // resAddOne,
+    // resAddTwo,
+    // resAddThree,
+    // resAddFour,
+    // resAddFive,
     perAddrsAvai,
-    perAddOne,
-    perAddTwo,
-    perAddThree,
-    perAddFour,
-    perAddFive,
+    permanentAddress,
+    // perAddOne,
+    // perAddTwo,
+    // perAddThree,
+    // perAddFour,
+    // perAddFive,
     mobileNo,
     landNo,
     email,
     designation,
     division,
     placeWork,
-    offAddrslineOne,
-    offAddrslineTwo,
-    offAddrslineThree,
-    offAddrslineFour,
-    offAddrslineFive,
+    officeAddress,
+    // offAddrslineOne,
+    // offAddrslineTwo,
+    // offAddrslineThree,
+    // offAddrslineFour,
+    // offAddrslineFive,
     offMobile,
     offLandNo,
     offEmail,
@@ -112,21 +115,23 @@ export const NewConfirm = ({
         <strong className="col-9">{new Date(dob).toLocaleDateString()}</strong>
         <p className="col-3">Residence Address :</p>
         <strong className="col-9">
-          {resAddOne ? `${resAddOne}` : null}
+          {residenceAddress}
+          {/* {resAddOne ? `${resAddOne}` : null}
           {resAddTwo ? `, ${resAddTwo}` : null}
           {resAddThree ? `, ${resAddThree}` : null}
           {resAddFour ? `, ${resAddFour}` : null}
-          {resAddFive ? `, ${resAddFive}` : null}
+          {resAddFive ? `, ${resAddFive}` : null} */}
         </strong>
         {perAddrsAvai && (
           <>
             <p className="col-3">Permanent Address : </p>
             <strong className="col-9">
-              {perAddOne ? `${perAddOne}` : null}
+              {permanentAddress}
+              {/* {perAddOne ? `${perAddOne}` : null}
               {perAddTwo ? `, ${perAddTwo}` : null}
               {perAddThree ? `, ${perAddThree}` : null}
               {perAddFour ? `, ${perAddFour}` : null}
-              {perAddFive ? `, ${perAddFive}` : null}
+              {perAddFive ? `, ${perAddFive}` : null} */}
             </strong>
           </>
         )}
@@ -153,11 +158,12 @@ export const NewConfirm = ({
         <strong className="col-9">{placeWork} </strong>
         <p className="col-3">Office Address : </p>
         <strong className="col-9">
-          {offAddrslineOne ? `${offAddrslineOne}` : null}
+          {officeAddress}
+          {/* {offAddrslineOne ? `${offAddrslineOne}` : null}
           {offAddrslineTwo ? `, ${offAddrslineTwo}` : null}
           {offAddrslineThree ? `, ${offAddrslineThree}` : null}
           {offAddrslineFour ? `, ${offAddrslineFour}` : null}
-          {offAddrslineFive ? `, ${offAddrslineFive}` : null}
+          {offAddrslineFive ? `, ${offAddrslineFive}` : null} */}
         </strong>
         <p className="col-3">Office Mobile No : </p>
         <strong className="col-9">{offMobile}</strong>

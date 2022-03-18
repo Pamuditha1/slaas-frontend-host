@@ -8,6 +8,7 @@ import NotFound from "./NotFound";
 import Logins from "./StartPage";
 import UserComponent from "./UserComponent";
 import Header from "./Header";
+import NewAdminLogin from "./forms/NewAdminLogin";
 
 class ProjectWindow extends Component {
   render() {
@@ -19,7 +20,8 @@ class ProjectWindow extends Component {
           <Switch>
             <Route path="/user" component={UserComponent} />
             <Route path="/not-found" component={NotFound} />
-            <Route path="/" component={Logins} />
+            {/* <Route path="/" component={Logins} /> */}
+            <Route path="/" component={NewAdminLogin} />
             <Redirect to="/not-found" />
           </Switch>
         </div>
