@@ -26,15 +26,17 @@ function NewRegisterUser() {
         .max(15, "Maximum 10 characters")
         .required("Required!"),
       email: Yup.string().email("Invalid Email").required("Required!"),
-      officeID: Yup.string().required("Required!"),
-      nic: Yup.string().required("Required!"),
+      officeID: Yup.string(),
+      //.required("Required!"),
+      nic: Yup.string(),
+      //.required("Required!")
       mobile: Yup.string()
         .length(10, "Should be 10 Numbers")
         .required("Required!"),
-      fixed: Yup.string()
-        .length(10, "Should be 10 Numbers")
-        .required("Required!"),
-      address: Yup.string().required("Required!"),
+      fixed: Yup.string().length(10, "Should be 10 Numbers"),
+      //.required("Required!"),
+      address: Yup.string(),
+      //.required("Required!"),
       password: Yup.string()
         .min(5, "Minimum 5 Characters")
         .required("Required!"),
