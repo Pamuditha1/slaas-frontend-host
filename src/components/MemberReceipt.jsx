@@ -7,7 +7,7 @@ import PaymentRecordsForReceipt from "./PaymentRecordsForReceipt";
 import { getInvoice } from "../services/getInvoiceNo";
 import { api } from "../services/api";
 
-function MemberReceipt() {
+function MemberReceipt(props) {
   const [step, setStep] = useState(1);
   const paymentMethods = [
     "Select Method",
@@ -49,6 +49,10 @@ function MemberReceipt() {
     fetchInvoice();
   }, []);
 
+  useEffect(() => {
+    fetchMemberData(props.match.params.id);
+  }, [props.match.params.id]);
+
   const onChangeMemNo = (e) => {
     setPaymentData({ membershipNo: e.target.value });
     // const fetchData = () => {
@@ -75,35 +79,38 @@ function MemberReceipt() {
     // fetchData();
   };
 
+  const fetchMemberData = (id) => {
+    axios(`${api}/user/receipt/${id}`)
+      .then(function (res) {
+        const paymentRecords = {
+          memPaidLast: res.data.memPaidLast,
+          lastPaidForYear: res.data.lastPaidForYear,
+          lastMembershipPaid: res.data.lastMembershipPaid,
+          arrearsConti: res.data.arrearsConti,
+          arrearsUpdated: res.data.arrearsUpdated,
+          memberID: res.data.memberID,
+          gradeOfMembership: res.data.gradeOfMembership,
+          gradeFee: res.data.gradeFee,
+        };
+        setPaymentData({
+          ...paymentData,
+          memberID: res.data.memberID,
+          memberName: res.data.nameWinitials,
+          nic: res.data.nic,
+          membershipNo: res.data.membershipNo,
+        });
+        setPaymentRecords(paymentRecords);
+        setPaymentData({ ...paymentData, yearlyFee: paymentRecords.gradeFee });
+      })
+      .catch((e) => console.log(e));
+  };
+
   const getMemberData = async (e) => {
     // e.preventDefault();
     if (e.key === "Enter") {
       e.preventDefault();
-      const fetchData = () => {
-        axios(`${api}/user/receipt/${e.target.value}`)
-          .then(function (res) {
-            const paymentRecords = {
-              memPaidLast: res.data.memPaidLast,
-              lastPaidForYear: res.data.lastPaidForYear,
-              lastMembershipPaid: res.data.lastMembershipPaid,
-              arrearsConti: res.data.arrearsConti,
-              arrearsUpdated: res.data.arrearsUpdated,
-              memberID: res.data.memberID,
-              gradeOfMembership: res.data.gradeOfMembership,
-              gradeFee: res.data.gradeFee,
-            };
-            setPaymentData({
-              ...paymentData,
-              memberID: res.data.memberID,
-              memberName: res.data.nameWinitials,
-              nic: res.data.nic,
-              membershipNo: res.data.membershipNo,
-            });
-            setPaymentRecords(paymentRecords);
-          })
-          .catch((e) => console.log(e));
-      };
-      fetchData();
+
+      fetchMemberData(e.target.value);
     }
   };
 
@@ -289,6 +296,34 @@ function MemberReceipt() {
                 type="number"
                 id="yearlyFee"
                 name="yearlyFee"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="form-group col-6">
+              <label htmlFor="admissionFee" className="col-5">
+                Admission Fee
+              </label>
+              <input
+                onChange={onchange}
+                value={paymentData.admissionFee}
+                className="form-control col-11 ml-3"
+                type="number"
+                id="admissionFee"
+                name="admissionFee"
+              />
+            </div>
+            <div className="form-group col-6">
+              <label htmlFor="idCardFee" className="col-5">
+                ID Card Fee
+              </label>
+              <input
+                onChange={onchange}
+                value={paymentData.idCardFee}
+                className="form-control col-11 ml-3"
+                type="number"
+                id="idCardFee"
+                name="idCardFee"
               />
             </div>
           </div>

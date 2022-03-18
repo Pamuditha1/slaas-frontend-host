@@ -273,7 +273,7 @@ function NewMemberPaymentForm() {
               />
             </div>
           </div>
-          <div className="row">
+          {/* <div className="row">
             <div className="form-group col-6">
               <label htmlFor="arrearsFee" className="col-5">
                 Arrears Fee
@@ -287,7 +287,7 @@ function NewMemberPaymentForm() {
                 name="arrearsFee"
               />
             </div>
-          </div>
+          </div> */}
           <div className="row">
             <div value={paymentData.description} className="form-group col-12">
               <label htmlFor="description" className="col-3">

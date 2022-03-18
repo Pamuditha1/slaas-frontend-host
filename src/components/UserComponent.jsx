@@ -109,6 +109,11 @@ function UserComponent(props) {
             path="/user/manage-committees"
             component={SetCommitteMembers}
           />
+          <PrivateRoute
+            exact
+            path="/user/receipt/member/:id"
+            component={MemberReceipt}
+          />
           <PrivateRoute path="/user/receipt/member" component={MemberReceipt} />
           <PrivateRoute path="/user/receipt/new" component={NewMemberReceipt} />
           <PrivateRoute exact path="/user/settings" component={Settings} />

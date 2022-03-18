@@ -150,7 +150,8 @@ function NewRegisterForm(props) {
     formData.append("file", file);
     addProfilePic(formData, nameOfImage).then(() => {
       setLoading(false);
-      props.history.push("/user/receipt/member");
+      let memNo = membershipNo.split("/")[0];
+      props.history.push(`/user/receipt/member/${memNo}`);
     });
   };
 
