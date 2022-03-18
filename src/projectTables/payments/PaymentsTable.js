@@ -12,7 +12,9 @@ import Loader from "react-loader-spinner";
 import DayPicker from "../../components/DayPicker";
 
 import { COLUMNS } from "./paymentColumns";
+import { useExportData } from "react-table-plugins";
 import ExportingButtons from "../common/ExportingButtons";
+import getExportFileBlob from "../common/exportFunction";
 
 import { getAllPayments } from "../../services/getAllPayments";
 import { filterPayments } from "../../services/filterPayments";
@@ -69,11 +71,13 @@ export const PaymentsTable = (props) => {
     {
       columns,
       data,
+      getExportFileBlob,
     },
     useFilters,
     useGlobalFilter,
     useSortBy,
-    usePagination
+    usePagination,
+    useExportData
   );
 
   const { pageIndex, pageSize } = state;

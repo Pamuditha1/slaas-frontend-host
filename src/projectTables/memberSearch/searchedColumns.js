@@ -11,7 +11,7 @@ export const COLUMNS = [
         : props.row.original.nic;
       return (
         <Link to={`/user/member/profile/${memberID}`} target="_blank">
-          <button className="btn btn-outline-primary">View</button>
+          <button className="btn btn-outline-light">View</button>
         </Link>
       );
     },

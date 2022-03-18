@@ -140,7 +140,7 @@ export default class Example extends React.Component {
             )}{" "}
             <button
               onClick={this.changeShow}
-              className="btn btn-primary pr-3 pl-3 ml-5"
+              className="btn btn-danger pr-3 pl-3 ml-5"
               style={bstyleB}
             >
               Select Date Range
