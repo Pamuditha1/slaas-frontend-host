@@ -100,7 +100,7 @@ function MemberReceipt(props) {
           membershipNo: res.data.membershipNo,
         });
         setPaymentRecords(paymentRecords);
-        setPaymentData({ ...paymentData, yearlyFee: paymentRecords.gradeFee });
+        setPaymentData({ yearlyFee: paymentRecords.gradeFee });
       })
       .catch((e) => console.log(e));
   };
