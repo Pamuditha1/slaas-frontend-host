@@ -288,19 +288,139 @@ export const MemberProfileWUpdate = (props) => {
         <p className="col-3">Name with Initials : </p>
         <strong className="col-9">
           {title} {nameWinitials}{" "}
+          <span className="ml-3">
+            <button
+              onClick={() => setUpdate("nameWinitials", nameWinitials)}
+              className="btn btn-outline-warning"
+              style={enableEdit ? buttonStyleU : buttonStyleUNotDisplay}
+            >
+              <FontAwesomeIcon icon={faEdit} size="xs" />
+            </button>
+            <input
+              className="ml-3"
+              value={dataToUpdate.value}
+              onChange={onUpdateChange}
+              style={{ display: isModalOpen != "nameWinitials" && "none" }}
+            />
+            <button
+              onClick={saveUpdate}
+              className="btn btn-primary ml-2"
+              style={{ display: isModalOpen != "nameWinitials" && "none" }}
+            >
+              Update
+            </button>
+          </span>
         </strong>
         <p className="col-3">Name in Full : </p>
-        <strong className="col-9">{fullName}</strong>
-        <p className="col-3">Name in Common Use : </p>
+        <strong className="col-9">
+          {fullName}
+          <span className="ml-3">
+            <button
+              onClick={() => setUpdate("fullName", fullName)}
+              className="btn btn-outline-warning"
+              style={enableEdit ? buttonStyleU : buttonStyleUNotDisplay}
+            >
+              <FontAwesomeIcon icon={faEdit} size="xs" />
+            </button>
+            <input
+              className="ml-3"
+              value={dataToUpdate.value}
+              onChange={onUpdateChange}
+              style={{ display: isModalOpen != "fullName" && "none" }}
+            />
+            <button
+              onClick={saveUpdate}
+              className="btn btn-primary ml-2"
+              style={{ display: isModalOpen != "fullName" && "none" }}
+            >
+              Update
+            </button>
+          </span>
+        </strong>
+        {/* <p className="col-3">Name in Common Use : </p>
         <strong className="col-9">
           {commonFirst} {commomLast}{" "}
-        </strong>
+        </strong> */}
         <p className="col-3">Gender : </p>
-        <strong className="col-9">{gender}</strong>
+        <strong className="col-9">
+          {gender}
+          <span className="ml-3">
+            <button
+              onClick={() => setUpdate("gender", gender)}
+              className="btn btn-outline-warning"
+              style={enableEdit ? buttonStyleU : buttonStyleUNotDisplay}
+            >
+              <FontAwesomeIcon icon={faEdit} size="xs" />
+            </button>
+            <input
+              className="ml-3"
+              value={dataToUpdate.value}
+              onChange={onUpdateChange}
+              style={{ display: isModalOpen != "gender" && "none" }}
+            />
+            <button
+              onClick={saveUpdate}
+              className="btn btn-primary ml-2"
+              style={{ display: isModalOpen != "gender" && "none" }}
+            >
+              Update
+            </button>
+          </span>
+        </strong>
         <p className="col-3">NIC : </p>
-        <strong className="col-9">{nic}</strong>
+        <strong className="col-9">
+          {nic}
+          <span className="ml-3">
+            <button
+              onClick={() => setUpdate("nic", nic)}
+              className="btn btn-outline-warning"
+              style={enableEdit ? buttonStyleU : buttonStyleUNotDisplay}
+            >
+              <FontAwesomeIcon icon={faEdit} size="xs" />
+            </button>
+            <input
+              className="ml-3"
+              value={dataToUpdate.value}
+              onChange={onUpdateChange}
+              style={{ display: isModalOpen != "nic" && "none" }}
+            />
+            <button
+              onClick={saveUpdate}
+              className="btn btn-primary ml-2"
+              style={{ display: isModalOpen != "nic" && "none" }}
+            >
+              Update
+            </button>
+          </span>
+        </strong>
         <p className="col-3">Date of Birth : </p>
-        <strong className="col-9">{new Date(dob).toLocaleDateString()}</strong>
+        <strong className="col-9">
+          {new Date(dob).toLocaleDateString()}
+          <span className="ml-3">
+            <button
+              onClick={() =>
+                setUpdate("dob", new Date(dob).toLocaleDateString())
+              }
+              className="btn btn-outline-warning"
+              style={enableEdit ? buttonStyleU : buttonStyleUNotDisplay}
+            >
+              <FontAwesomeIcon icon={faEdit} size="xs" />
+            </button>
+            <input
+              className="ml-3 "
+              value={dataToUpdate.value}
+              onChange={onUpdateChange}
+              style={{ display: isModalOpen != "dob" && "none" }}
+            />
+            <button
+              onClick={saveUpdate}
+              className="btn btn-primary ml-2"
+              style={{ display: isModalOpen != "dob" && "none" }}
+            >
+              Update
+            </button>
+          </span>
+        </strong>
         <p className="col-3">Residence Address : </p>
         <strong className="col-9">
           {resAddrs}
@@ -721,9 +841,57 @@ export const MemberProfileWUpdate = (props) => {
         <p className="col-3">Membership No : </p>
         <strong className="col-9">{displayMembershipNo}</strong>
         <p className="col-3">Grade of Membership : </p>
-        <strong className="col-9">{gradeOfMembership}</strong>
+        <strong className="col-9">
+          {gradeOfMembership}
+          {/* <span className="ml-3">
+            <button
+              onClick={() => setUpdate("gradeOfMembership", gradeOfMembership)}
+              className="btn btn-outline-warning"
+              style={enableEdit ? buttonStyleU : buttonStyleUNotDisplay}
+            >
+              <FontAwesomeIcon icon={faEdit} size="xs" />
+            </button>
+            <input
+              className="ml-3"
+              value={dataToUpdate.value}
+              onChange={onUpdateChange}
+              style={{ display: isModalOpen != "gradeOfMembership" && "none" }}
+            />
+            <button
+              onClick={saveUpdate}
+              className="btn btn-primary ml-2"
+              style={{ display: isModalOpen != "gradeOfMembership" && "none" }}
+            >
+              Update
+            </button>
+          </span> */}
+        </strong>
         <p className="col-3">Section: </p>
-        <strong className="col-9">{section}</strong>
+        <strong className="col-9">
+          {section}
+          {/* <span className="ml-3">
+            <button
+              onClick={() => setUpdate("section", section)}
+              className="btn btn-outline-warning"
+              style={enableEdit ? buttonStyleU : buttonStyleUNotDisplay}
+            >
+              <FontAwesomeIcon icon={faEdit} size="xs" />
+            </button>
+            <input
+              className="ml-3"
+              value={dataToUpdate.value}
+              onChange={onUpdateChange}
+              style={{ display: isModalOpen != "section" && "none" }}
+            />
+            <button
+              onClick={saveUpdate}
+              className="btn btn-primary ml-2"
+              style={{ display: isModalOpen != "section" && "none" }}
+            >
+              Update
+            </button>
+          </span> */}
+        </strong>
         {memberBefore && (
           <>
             <p className="col-3">Member Before </p>

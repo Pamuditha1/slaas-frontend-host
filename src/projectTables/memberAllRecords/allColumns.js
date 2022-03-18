@@ -53,16 +53,16 @@ export const COLUMNS = [
     accessor: "gradeOfMembership",
     Filter: ColumnFilter,
   },
-  {
-    Header: "First Name",
-    accessor: "commonFirst",
-    Filter: ColumnFilter,
-  },
-  {
-    Header: "Last Name",
-    accessor: "commomLast",
-    Filter: ColumnFilter,
-  },
+  // {
+  //   Header: "First Name",
+  //   accessor: "commonFirst",
+  //   Filter: ColumnFilter,
+  // },
+  // {
+  //   Header: "Last Name",
+  //   accessor: "commomLast",
+  //   Filter: ColumnFilter,
+  // },
   {
     Header: "Gender",
     accessor: "gender",
